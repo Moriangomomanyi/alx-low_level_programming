@@ -1,12 +1,9 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
-
 /**
  * main - Entry point
- *
  * Description: Prints the specified text to the standard error.
- *
  * Return: Always 1 (Failure)
  */
 int main(void)
