@@ -8,6 +8,5 @@
 int main(void)
 {
        fput("and that piece of art is useful\" - Dora Korpar, 2015-10-19\n", stdout);
-write(STDERR_FILENO, message, 59);
 return (1);
 }
