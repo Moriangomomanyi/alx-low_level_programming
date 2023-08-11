@@ -1,4 +1,5 @@
 #include <stdio.h>
+
 /**
  * main - Entry point
  * Desciption: Prints the alphabet in lowercase, excluding the letters 'q' and 'e',
