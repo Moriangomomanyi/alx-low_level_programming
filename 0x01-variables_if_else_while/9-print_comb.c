@@ -1,24 +1,25 @@
 #include <stdio.h>
+
 /**
- * main - Entry point
- *
- * Description: Prints all possible combinations of single-digit numbers.
- * Return: Always 0 (Success)
+ * main - main block
+ * Description: Print all possible combinations of single-digit numbers.
+ * Numbers must be separated by commas and a space.
+ * You can only use `putchar` to print to the console.
+ * You can only use `putchar` up to four times.
+ * You are not allowed to use any variable of type `char`.
+ * Return: 0
  */
-int main(void)
-{
-int num1, num2;
-for (num1 = 0; num1 <= 8; num1++)
-{
-for (num2 = num1 + 1; num2 <= 9; num2++)
-{
-putchar(num1 + '0');
-if (num1 < 8 || num2 < 9){
-putchar(',');
-putchar(' ');}
-putchar(num2 + '0');
-}
-}
-putchar('\n');
-return (0);
+sh: 1: :wq: not found
+    int x;
+    for (x = 48; x < 58; x++)
+    {
+        putchar(x);
+        if (x < 57)
+        {
+            putchar(44);
+            putchar(32);
+        }
+    }
+    putchar('\n');
+    return (0);
 }
