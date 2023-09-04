@@ -1,3 +1,1 @@
-#!/bin/bash
-gcc -c _putchar.c
-gcc -c _islower.c
+
