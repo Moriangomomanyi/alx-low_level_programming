@@ -1,54 +1,60 @@
-#include "main.h"
-#include <stdlib.h>
 #include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
 
 /**
-  * argstostr - convert the params passed to the program to string
-  * @ac: the argument count
-  * @av: the argument vector
-  *
-  * Return: ...
-  */
-char *argstostr(int ac, char **av)
+ * strtow - Split a string into words.
+ * @str: The input string to be split.
+ *
+ * Return: Pointer to an array of strings (words), or NULL on failure.
+ * Each element of the array contains a single word, null-terminated.
+ * The last element of the returned array is NULL.
+ * Words are separated by spaces.
+ */
+char **strtow(char *str)
 {
-	int ch = 0, i = 0, j = 0, k = 0;
-	char *s;
+    if (str == NULL || *str == '\0')
+        return NULL;
 
-	if (ac == 0 || av == NULL)
-		return (NULL);
+    int word_count = 0;
+    char **words = NULL;
 
-	while (i < ac)
-	{
-		while (av[i][j])
-		{
-			ch++;
-			j++;
-		}
+    // Count the number of words
+    for (char *c = str; *c; c++) {
+        if (*c != ' ') {
+            word_count++;
+            while (*c && *c != ' ')
+                c++;
+        }
+    }
 
-		j = 0;
-		i++;
-	}
+    if (word_count == 0)
+        return NULL;
 
-	s = malloc((sizeof(char) * ch) + ac + 1);
+    // Allocate memory for the word array
+    words = (char **)malloc((word_count + 1) * sizeof(char *));
+    if (words == NULL)
+        return NULL;
 
-	i = 0;
-	while (av[i])
-	{
-		while (av[i][j])
-		{
-			s[k] = av[i][j];
-			k++;
-			j++;
-		}
+    int word_index = 0;
+    char *token = strtok(str, " ");
 
-		s[k] = '\n';
+    // Tokenize the string and store the words in the array
+    while (token != NULL) {
+        words[word_index] = strdup(token);
+        if (words[word_index] == NULL) {
+            // Memory allocation failed, clean up and return NULL
+            for (int i = 0; i < word_index; i++) {
+                free(words[i]);
+            }
+            free(words);
+            return NULL;
+        }
+        word_index++;
+        token = strtok(NULL, " ");
+    }
 
-		j = 0;
-		k++;
-		i++;
-	}
-
-	k++;
-	s[k] = '\0';
-	return (s);
+    words[word_index] = NULL;
+    return words;
 }
+
