@@ -35,9 +35,11 @@ char *extract_word(char *str, int start, int end)
 	char *word = malloc(sizeof(char) * (end - start + 2));
 
 	if (word == NULL)
+	{
 		return (NULL);
+	}
 	int i;
-       	int j = 0;
+	int j = 0;
 
 	for (i = start; i <= end; i++)
 		word[j++] = str[i];
