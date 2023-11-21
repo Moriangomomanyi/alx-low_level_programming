@@ -5,7 +5,7 @@
  * @head: the head of a linked list
  * @n: the value to be added to the new node
  *
- * return: returns the address of the new element
+ * Return: returns the address of the new element, or NULL if failed
  */
 listint_t *add_nodeint_end(listint_t **head, const int n)
 {
